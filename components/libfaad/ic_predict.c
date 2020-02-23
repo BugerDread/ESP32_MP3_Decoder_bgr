@@ -73,7 +73,7 @@ static int16_t quant_pred(float32_t x)
 
 static float32_t inv_quant_pred(int16_t q)
 {
-    float32_t x;
+    float32_t x = 0;
     uint32_t *tmp = (uint32_t*)&x;
     *tmp = ((uint32_t)q)<<16;
 
