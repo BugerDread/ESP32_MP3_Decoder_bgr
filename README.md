@@ -1,5 +1,47 @@
-ESP32 Web Radio
-=======================
+ESP32 Web Radio forked by BugerDread
+====================================
+Original project was made using old ESP-IDF so I decided to make it compatible with ESP-IDF 4.0, which is current stable release.
+
+README also needs to be fixed, because:
+- ESP-IDF installation procedure changed - presented steps are no longer valid, please DO NOT FOLLOW "Get the SDK" section of original README, it will NOT WORK WITH ESP-IDF 4.0
+- this is fork of https://github.com/esa-n/ESP32_MP3_Decoder which is fork of https://github.com/MrBuddyCasino/ESP32_MP3_Decoder, the Esa-n's version adds some features not mentioned in readme at all such as LCD
+
+Therefore I decided to keep original README at the bottom and to write new information from the top.
+
+## Required Software
+
+Get the ESP-IDF v4.0: https://docs.espressif.com/projects/esp-idf/en/v4.0/get-started/index.html#installation-step-by-st
+
+If you get error during installation about "--no-site-packages", you need to remove this option from tools/idf_tools.py and rerun install.sh. See this bugfix: https://github.com/espressif/esp-idf/commit/8cb3cc515477e777144acb3b58f5156c4ad69124
+
+Clone this repository:
+
+    git clone https://github.com/BugerDread/ESP32_MP3_Decoder_bgr.git
+    cd ESP32_MP3_Decoder_bgr/
+    git submodule init && git submodule update
+
+## Configuration, building, flashing, controls
+
+Follow the procedures described in original README (see bellow).
+
+## Connecting the I2S codec
+
+I did not tested the external I2S codec support, because I have no such chip currently. If you are able to test this fork using I2S codec please let me know if it works (or not).
+
+## Bluetooth Speaker Mode
+
+I did not tested the bluetooth speaker mode yet.
+
+## Related Hardware & pictures
+
+Tested using ESP32 DevKit / ESP32-WROOM from Aliexpress using PDM / internal-DAC output.
+
+[Few pictures from testing](./pics)
+
+You can see few resistors and capacitors around DAC output, these are the low-pass RC filter I experimented with. Im currently using 4x 1.5k resistors and 4x 6.8nF caps plus 2x 3.9k to sum the stereo signal into mono.
+
+# Original README
+=================
 This is a simple web radio streamer. It connects to a web radio station via wifi, decodes the stream and plays the sound via I2S codec or
 to a speaker directly connected to the DAC pins.
 

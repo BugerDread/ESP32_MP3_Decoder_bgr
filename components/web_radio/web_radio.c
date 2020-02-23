@@ -187,7 +187,7 @@ void web_radio_gpio_handler_task(void *pvParams)
 
 void web_radio_lcd_handler_task(void *pvParams)
 {
-    char buf[3];
+    char buf[11];	//Bgr to be able to compile using IDF 4.0
     uint8_t i, old = 0, len;
     bool wl_conn;
     web_radio_t *config = pvParams;
@@ -258,7 +258,7 @@ void web_radio_lcd_handler_task(void *pvParams)
         if (old != player->fill_level)
         {
             old = player->fill_level;
-            sprintf(buf, "%02u", player->fill_level);
+            sprintf(buf,"%02u", player->fill_level);
             LCD_Print_addr(buf, 78);
         }
     }
